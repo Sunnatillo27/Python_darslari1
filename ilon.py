@@ -24,7 +24,7 @@ class Snake():
     def move(self):
         cur = self.get_head_position()
         x,y = self.direction
-        new = (((cur[0]+(x*gridsize))%screen_width), (cur[1]+(y*gridsize))%screen_height)
+        new = (((cur[0]+(x*gridsize))%screen_width ), (cur[1]+(y*gridsize))%screen_height)
         if len(self.positions) > 2 and new in self.positions[2:]:
             self.reset()
         else:
@@ -42,7 +42,7 @@ class Snake():
         for p in self.positions:
             r = pygame.Rect((p[0], p[1]), (gridsize,gridsize))
             pygame.draw.rect(surface, self.color, r)
-            pygame.draw.rect(surface, (93,216, 228), r, 1)
+            pygame.draw.rect(surface, (93,16, 28), r, 2)
 
     def handle_keys(self):
         for event in pygame.event.get():
@@ -61,7 +61,7 @@ class Snake():
 
 class Food():
     def __init__(self):
-        self.position = (0,0)
+        self.position = (1,0)
         self.color = (223, 163, 49)
         self.randomize_position()
 
@@ -122,7 +122,7 @@ def main():
         snake.draw(surface)
         food.draw(surface)
         screen.blit(surface, (0,0))
-        text = myfont.render("Score {0}".format(snake.score), 1, (0,0,0))
+        text = myfont.render("Ball {0}".format(snake.score), 10, (0,0,0))
         screen.blit(text, (5,10))
         pygame.display.update()
 
